@@ -14,7 +14,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
-        repository: https://github.com/kubernetes-learning-projects/kube-petclinc-app.git
+        repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
 
     - name: Build Java Application
