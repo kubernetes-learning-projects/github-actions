@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: eks_runner
     container:
-      image: techiescamp/jdk-17:1.0.0
+      image: techiescamp/java-agent:1.0.0
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -19,3 +19,7 @@ jobs:
 
     - name: Build Java Application
       run: mvn clean install -DskipTests
+
+    - name: Build Docker image
+      run: |
+        docker build -t java:1.0.0 .
