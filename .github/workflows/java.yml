@@ -9,12 +9,13 @@ jobs:
   build:
     runs-on: eks_runner
     container:
-      image: ubuntu:latest
+      image: techiescamp/jdk-17:1.0.0
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
+        repository: https://github.com/kubernetes-learning-projects/kube-petclinc-app.git
         ref: main
 
-    - name: Echo Message
-      run: echo "Hello World"
+    - name: Build Java Application
+      run: mvn clean install -DskipTests
