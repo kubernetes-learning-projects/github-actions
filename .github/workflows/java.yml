@@ -17,10 +17,11 @@ jobs:
         repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
 
-    - name: Copy deployment files
-      run: |
-        mkdir -p deployments
-        cp -r ../../deployment/* deployment/
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      with:
+        path: deployment
+        ref: main
 
     - name: Command
       run: |
