@@ -14,10 +14,16 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
-        repository: kubernetes-learning-projects/kube-petclinc-app
+        repository: kubernetes-learning-projects/kube-petclinc-app/
         ref: main
 
-    - name: command
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      with:
+        repository: techiescamp/kubernetes-projects/03-java-app-deployment
+        ref: java-app-deployment
+
+    - name: Command
       run: |
         ls
         pwd
