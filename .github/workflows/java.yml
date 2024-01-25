@@ -17,15 +17,11 @@ jobs:
         ref: main
 
     - name: Checkout source code Repository
-      uses: actions/checkout@v2
-      with:
-        repository: kubernetes-learning-projects/kube-petclinc-app
-        ref: main
+      run: git clone https://github.com/kubernetes-learning-projects/kube-petclinc-app.git
 
     - name: Command
       run: |
         ls
-        kubeclt version
 
     - name: Build Java Application
       run: mvn -f kube-pet-clinic-app clean install -DskipTests
