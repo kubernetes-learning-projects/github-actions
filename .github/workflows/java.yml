@@ -24,8 +24,19 @@ jobs:
       run: |
         docker build -t pet-clinic:1.0.0 .
 
-    - name: Push image to Amazon ECR
+    - name: Create Namespace if not exists
       run: |
-        aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 814200988517.dkr.ecr.us-west-2.amazonaws.com
-        docker tag pet-clinic:1.0.0 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
-        docker push 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
+        kubectl create namespace pet-clinic-app || true
+        kubectl create namespace pet-clinic-db || true
+
+    - name: Deploy MySQL Database
+      run: |
+        kubectl apply -f secret.yml --namespace=pet-clinic-db
+        kubectl apply -f mysql/configmap.yml
+        kubectl apply -f mysql/mysql.yml
+
+    - name: Deploy Java Application
+      run: |
+        kubectl apply -f secret.yml --namespace=pet-clinic-app
+        kubectl apply -f java-app/configmap.yml
+        kubectl apply -f java-app/java.yml
