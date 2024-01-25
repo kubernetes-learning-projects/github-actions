@@ -16,6 +16,11 @@ jobs:
       with:
         repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
+    
+    - name: Copy Deployment Files to Workspace
+      run: |
+        mkdir -p $GITHUB_WORKSPACE/deployment
+        cp -r * $GITHUB_WORKSPACE
 
     - name: Command
       run: |
