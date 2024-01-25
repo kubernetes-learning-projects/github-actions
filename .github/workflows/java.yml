@@ -20,7 +20,7 @@ jobs:
     - name: Copy Deployment Files to Workspace
       run: |
         mkdir -p $GITHUB_WORKSPACE/deployment
-        cp -r deployment/* $GITHUB_WORKSPACE/deployment
+        cp -r * $GITHUB_WORKSPACE/deployment
 
     - name: Build Java Application
       run: mvn -f kube-pet-clinic-app clean install -DskipTests
