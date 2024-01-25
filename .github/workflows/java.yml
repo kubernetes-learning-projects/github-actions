@@ -11,10 +11,16 @@ jobs:
     container:
       image: techiescamp/java-agent:2.0.0
     steps:
-    - name: Checkout Actions Repository
+    - name: Checkout source code Repository
       uses: actions/checkout@v2
       with:
+        repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
+
+    - name: Copy Deployment Files to Workspace
+      run: |
+        mkdir -p $GITHUB_WORKSPACE/deployment
+        cp -r deployment/* $GITHUB_WORKSPACE/deployment
 
     - name: Build Java Application
       run: mvn -f kube-pet-clinic-app clean install -DskipTests
@@ -25,7 +31,7 @@ jobs:
 
     - name: Command
       run: |
-        kubectl version
+        ls
 
     - name: Create Namespace if not exists
       run: |
