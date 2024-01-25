@@ -15,18 +15,17 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: kubernetes-learning-projects/kube-petclinc-app
+        path: kube-petclinc-app
+        ref: main
+
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      with:
         ref: main
 
     - name: Command
       run: |
         ls
-
-    - name: kube
-      run: |
-        mkdir -p $HOME/.kube
-        cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-        chown $(id -u):$(id -g) $HOME/.kube/config
-
 
     - name: Create Namespace if not exists
       run: |
