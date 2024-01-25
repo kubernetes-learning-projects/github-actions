@@ -16,8 +16,15 @@ jobs:
       with:
         ref: main
 
+    - name: Checkout source code Repository
+      uses: actions/checkout@v2
+      with:
+        repository: kubernetes-learning-projects/kube-petclinc-app
+        ref: main
+
     - name: Command
       run: |
+        which pom.xml
         ls
         ls deployment
         ls kube-pet-clinic-app
