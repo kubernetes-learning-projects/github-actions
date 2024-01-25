@@ -9,20 +9,13 @@ jobs:
   build:
     runs-on: eks_runner
     container:
-      image: techiescamp/java-agent:1.0.0
+      image: techiescamp/java-agent:2.0.0
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
         repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
-
-    - name: Build Java Application
-      run: mvn clean install -DskipTests
-
-    - name: Build Docker image
-      run: |
-        docker build -t pet-clinic:1.0.0 .
 
     - name: Create Namespace if not exists
       run: |
