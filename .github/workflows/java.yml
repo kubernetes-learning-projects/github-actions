@@ -36,12 +36,12 @@ jobs:
 
     - name: Deploy MySQL Database
       run: |
-        kubectl apply -f secret.yml --namespace=pet-clinic-db
-        kubectl apply -f mysql/configmap.yml
-        kubectl apply -f mysql/mysql.yml
+        kubectl apply -f 03-java-app-deployment/secret.yml --namespace=pet-clinic-db
+        kubectl apply -f 03-java-app-deployment/mysql/configmap.yml
+        kubectl apply -f 03-java-app-deployment/mysql/mysql.yml
 
     - name: Deploy Java Application
       run: |
-        kubectl apply -f secret.yml --namespace=pet-clinic-app
-        kubectl apply -f java-app/configmap.yml
-        kubectl apply -f java-app/java.yml
+        kubectl apply -f 03-java-app-deployment/secret.yml --namespace=pet-clinic-app
+        kubectl apply -f 03-java-app-deployment/java-app/configmap.yml
+        kubectl apply -f 03-java-app-deployment/java-app/java.yml
