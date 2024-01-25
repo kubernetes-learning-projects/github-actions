@@ -14,14 +14,15 @@ jobs:
     - name: Checkout source code Repository
       uses: actions/checkout@v2
       with:
-        repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
-    
-    - name: Copy Deployment Files to Workspace
-      run: |
-        mkdir -p $GITHUB_WORKSPACE/deployment
-        cp -r * $GITHUB_WORKSPACE
 
     - name: Command
       run: |
         ls
+        ls deployment
+        ls kube-pet-clinic-app
+      working-directory: $GITHUB_WORKSPACE
+
+    - name: Build Java Application
+      run: mvn -f kube-pet-clinic-app clean install -DskipTests
+      working-directory: $GITHUB_WORKSPACE
