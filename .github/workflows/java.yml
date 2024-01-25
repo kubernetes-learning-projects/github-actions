@@ -17,35 +17,6 @@ jobs:
         repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
 
-    - name: Copy Deployment Files to Workspace
-      run: |
-        mkdir -p $GITHUB_WORKSPACE/deployment
-        cp -r * $GITHUB_WORKSPACE/deployment
-
-    - name: Build Java Application
-      run: mvn -f kube-pet-clinic-app clean install -DskipTests
-
-    - name: Build Docker image
-      run: |
-        docker build -t pet-clinic:1.0.0 kube-pet-clinic-app/.
-
     - name: Command
       run: |
         ls
-
-    - name: Create Namespace if not exists
-      run: |
-        kubectl create namespace pet-clinic-app || true
-        kubectl create namespace pet-clinic-db || true
-
-    - name: Deploy MySQL Database
-      run: |
-        kubectl apply -f deployment/secret.yml --namespace=pet-clinic-db
-        kubectl apply -f deployment/mysql/configmap.yml
-        kubectl apply -f deployment/mysql/mysql.yml
-
-    - name: Deploy Java Application
-      run: |
-        kubectl apply -f deployment/secret.yml --namespace=pet-clinic-app
-        kubectl apply -f deployment/java-app/configmap.yml
-        kubectl apply -f deployment/java-app/java.yml
