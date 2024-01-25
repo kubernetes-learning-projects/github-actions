@@ -25,8 +25,7 @@ jobs:
     - name: Command
       run: |
         ls
-        ls deployment
-        ls kube-pet-clinic-app
+        kubeclt version
 
     - name: Build Java Application
       run: mvn -f kube-pet-clinic-app clean install -DskipTests
