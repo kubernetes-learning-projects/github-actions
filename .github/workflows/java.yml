@@ -20,7 +20,6 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v2
       with:
-        path: deployment
         ref: main
 
     - name: Command
