@@ -22,10 +22,11 @@ jobs:
       with:
         repository: techiescamp/kubernetes-projects
         ref: java-app-deployment
-        path: 03-java-app-deployment
+        submodules: 03-java-app-deployment
 
     - name: Command
       run: |
+        ls
         ls 03-java-app-deployment
 
     - name: Create Namespace if not exists
