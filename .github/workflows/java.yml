@@ -21,8 +21,7 @@ jobs:
         ls
         ls deployment
         ls kube-pet-clinic-app
-      working-directory: $GITHUB_WORKSPACE
 
     - name: Build Java Application
       run: mvn -f kube-pet-clinic-app clean install -DskipTests
-      working-directory: $GITHUB_WORKSPACE
+
