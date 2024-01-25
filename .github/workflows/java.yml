@@ -11,14 +11,14 @@ jobs:
     container:
       image: techiescamp/java-agent:2.0.0
     steps:
-    - name: Checkout Repository
+    - name: Checkout Source Code Repository
       uses: actions/checkout@v2
       with:
         repository: kubernetes-learning-projects/kube-petclinc-app
         path: kube-petclinc-app
         ref: main
 
-    - name: Checkout Repository
+    - name: Checkout Actions Repository
       uses: actions/checkout@v2
       with:
         ref: main
@@ -26,6 +26,7 @@ jobs:
     - name: Command
       run: |
         ls
+        ls kube-petclinc-app
 
     - name: Create Namespace if not exists
       run: |
