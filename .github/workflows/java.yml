@@ -17,11 +17,11 @@ jobs:
         ref: main
 
     - name: Build Java Application
-      run: kube-petclinc-app/mvn clean install -DskipTests
+      run: kube-pet-clinc-app/mvn clean install -DskipTests
 
     - name: Build Docker image
       run: |
-        kube-petclinc-app/docker build -t pet-clinic:1.0.0 .
+        kube-pet-clinc-app/docker build -t pet-clinic:1.0.0 .
 
     - name: Command
       run: |
