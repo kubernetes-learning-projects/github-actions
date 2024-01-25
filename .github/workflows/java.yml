@@ -24,7 +24,6 @@ jobs:
 
     - name: Command
       run: |
-        which pom.xml
         ls
         ls deployment
         ls kube-pet-clinic-app
