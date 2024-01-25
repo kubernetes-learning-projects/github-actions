@@ -20,7 +20,7 @@ jobs:
     - name: Copy deployment files
       run: |
         mkdir -p deployments
-        cp -r ../deployment/* deployment/
+        cp -r ../../deployment/* deployment/
 
     - name: Command
       run: |
