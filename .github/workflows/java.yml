@@ -15,7 +15,6 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: kubernetes-learning-projects/kube-petclinc-app
-        path: kube-petclinc-app
         ref: main
 
     - name: Checkout Actions Repository
