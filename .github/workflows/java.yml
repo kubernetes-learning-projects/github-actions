@@ -17,6 +17,11 @@ jobs:
         repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
 
+    - name: command
+      run: |
+        ls
+        pwd
+
     - name: Create Namespace if not exists
       run: |
         kubectl create namespace pet-clinic-app || true
