@@ -11,15 +11,17 @@ jobs:
     container:
       image: techiescamp/java-agent:2.0.0
     steps:
-    - name: Checkout source code Repository
+    - name: Checkout Main Repository
       uses: actions/checkout@v2
       with:
+        repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
+
+    - name: Copy Folder
+      run: cp -r github-actions/deployment deployment/
 
     - name: Command
       run: |
         ls
 
-    - name: Build Java Application
-      run: mvn -f kube-pet-clinic-app clean install -DskipTests
 
