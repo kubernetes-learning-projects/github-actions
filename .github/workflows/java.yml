@@ -14,14 +14,10 @@ jobs:
     - name: Checkout Main Repository
       uses: actions/checkout@v2
       with:
-        repository: kubernetes-learning-projects/kube-petclinc-app
         ref: main
-
-    - name: Copy Folder
-      run: cp -r deployment $GITHUB_WORKSPACE/deployment
 
     - name: Command
       run: |
-        ls
+        ls -lt
 
 
