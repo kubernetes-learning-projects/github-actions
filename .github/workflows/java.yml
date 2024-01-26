@@ -18,7 +18,7 @@ jobs:
         ref: main
 
     - name: Copy Folder
-      run: cp -r github-actions/deployment deployment/
+      run: cp -r deployment $GITHUB_WORKSPACE
 
     - name: Command
       run: |
