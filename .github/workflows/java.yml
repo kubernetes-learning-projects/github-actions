@@ -20,4 +20,8 @@ jobs:
       run: |
         ls -lt
 
+    - name: Build Java Application
+      run: mvn clean install -DskipTests
+      working-directory: $GITHUB_WORKSPACE/kube-petclinc-app
+
 
