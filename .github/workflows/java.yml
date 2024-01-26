@@ -22,6 +22,6 @@ jobs:
 
     - name: Build Java Application
       run: mvn clean install -DskipTests
-      working-directory: $GITHUB_WORKSPACE/kube-petclinc-app
+      working-directory: kube-petclinc-app
 
 
