@@ -12,6 +12,7 @@ jobs:
       image: techiescamp/java-agent:2.0.0
 
     steps:
+    
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
