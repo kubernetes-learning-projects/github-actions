@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: eks_runner
     container:
-      image: techiescamp/java-agent:1.0.0
+      image: techiescamp/java-agent:2.0.0
 
     steps:
       - name: Checkout Repository
@@ -27,6 +27,6 @@ jobs:
 
       - name: Push image to Amazon ECR
         run: |
+          aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 814200988517.dkr.ecr.us-west-2.amazonaws.com
           docker tag pet-clinic:1.0.0 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
-          $(aws ecr get-login --no-include-email --region us-west-2)
           docker push 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
