@@ -12,7 +12,7 @@ jobs:
       image: techiescamp/java-agent:2.0.0
 
     steps:
-    
+
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
@@ -28,10 +28,5 @@ jobs:
 
       - name: Push image to Amazon ECR
         run: |
-          aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 814200988517.dkr.ecr.us-west-2.amazonaws.com
           docker tag pet-clinic:1.0.0 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
           docker push 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
-        env:
-          AWS_REGION: us-west-2
-          AWS_DEFAULT_REGION: us-west-2
-          AWS_ACCOUNT_ID: 814200988517
