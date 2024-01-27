@@ -9,19 +9,24 @@ jobs:
   build:
     runs-on: eks_runner
     container:
-      image: techiescamp/java-agent:2.0.0
+      image: techiescamp/java-agent:1.0.0
+
     steps:
-    - name: Checkout Main Repository
-      uses: actions/checkout@v2
-      with:
-        ref: main
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          repository: kubernetes-learning-projects/kube-petclinc-app
+          ref: main
 
-    - name: Command
-      run: |
-        ls -lt
+      - name: Build Java Application
+        run: mvn clean install -DskipTests
 
-    - name: Build Java Application
-      run: mvn clean install -DskipTests
-      working-directory: kube-petclinc-app
+      - name: Build Docker image
+        run: |
+          docker build -t pet-clinic:1.0.0 .
 
-
+      - name: Push image to Amazon ECR
+        run: |
+          docker tag pet-clinic:1.0.0 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
+          $(aws ecr get-login --no-include-email --region us-west-2)
+          docker push 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
