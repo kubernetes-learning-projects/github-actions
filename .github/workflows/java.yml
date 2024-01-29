@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: eks_runner
     container:
-      image: techiescamp/java-agent:2.0.0
+      image: techiescamp/java-agent:1.0.0
 
     steps:
 
