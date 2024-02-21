@@ -25,3 +25,12 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t pet-clinic:5.0.0 .
+
+      - name: Build image using Kaniko
+        uses: GoogleContainerTools/kaniko-executor@latest
+        with:
+          # Path to your Dockerfile
+          buildContext: .
+          # Set target image and ECR repository
+          destination: 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
+          serviceAccountName: github-actions
