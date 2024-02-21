@@ -24,10 +24,4 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t pet-clinic:1.0.0 .
-
-      - name: Push image to Amazon ECR
-        run: |
-          aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 814200988517.dkr.ecr.us-west-2.amazonaws.com
-          docker tag pet-clinic:1.0.0 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
-          docker push 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:1.0.0
+          docker build -t pet-clinic:5.0.0 .
