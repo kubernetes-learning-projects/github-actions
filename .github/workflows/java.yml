@@ -22,10 +22,6 @@ jobs:
       - name: Build Java Application
         run: mvn clean install -DskipTests
 
-      - name: Build Docker image
-        run: |
-          docker build -t pet-clinic:5.0.0 .
-
       - name: Build image using Kaniko
         uses: GoogleContainerTools/kaniko-executor@latest
         with:
