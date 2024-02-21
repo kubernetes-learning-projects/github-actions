@@ -22,11 +22,9 @@ jobs:
       - name: Build Java Application
         run: mvn clean install -DskipTests
 
-      - name: Build image using Kaniko
-        uses: GoogleContainerTools/kaniko-executor@latest
+      - name: Build and push Docker image
+        uses: google-github-actions/kaniko@v1
         with:
-          # Path to your Dockerfile
-          buildContext: .
-          # Set target image and ECR repository
+          context: .
+          dockerfile: dockerfile
           destination: 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
-          serviceAccountName: github-actions
