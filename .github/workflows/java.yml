@@ -12,6 +12,7 @@ jobs:
       image: techiescamp/java-agent:1.0.0
 
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v2
         with:
@@ -21,9 +22,11 @@ jobs:
       - name: Build Java Application
         run: mvn clean install -DskipTests
 
-      - name: Build and push Docker image
-        uses: google-github-actions/kaniko@v1
+      - name: Build image using Kaniko
+        uses: gcr.io/kaniko-project/executor:latest
         with:
-          context: .
-          dockerfile: dockerfile
+          # Path to your Dockerfile
+          buildContext: .
+          # Set target image and ECR repository
           destination: 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
+          serviceAccountName: github-actions
