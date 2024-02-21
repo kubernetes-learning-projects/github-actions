@@ -23,7 +23,7 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Build image using Kaniko
-        uses: gcr.io/kaniko-project/executor:latest
+        uses: gcr.io/kaniko-project/executor:debug
         with:
           # Path to your Dockerfile
           buildContext: .
