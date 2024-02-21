@@ -27,7 +27,7 @@ jobs:
           docker build -t pet-clinic:5.0.0 .
 
       - name: Build image using Kaniko
-        uses: GoogleContainerTools/kaniko-executor@latest
+        uses: gcr.io/kaniko-project/executor:latest
         with:
           # Path to your Dockerfile
           buildContext: .
