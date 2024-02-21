@@ -23,9 +23,9 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Build image using Kaniko
-        uses: bymarshall/kaniko-action@v1.8.0
+        uses: bymarshall/kaniko-action@main
         with:
-          image: gcr.io/kaniko-project/executor:v1.14.0 # Specify Kaniko version
+          image: gcr.io/kaniko-project/executor:latest
           buildContext: .
           destination: 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
           secret: github-actions
