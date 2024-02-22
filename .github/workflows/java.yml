@@ -27,12 +27,9 @@ jobs:
       - name: Build Java Application
         run: mvn clean install -DskipTests
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
       - name: Build, tag, and push image to Amazon ECR
         run: |
           IMAGE_URI="gcr.io/kaniko-project/executor:latest"
-          --context $GITHUB_WORKSPACE \
-          --dockerfile $GITHUB_WORKSPACE/dockerfile \
+          --context . \
+          --dockerfile ./Dockerfile \
           --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.
