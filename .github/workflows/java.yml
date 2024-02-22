@@ -31,8 +31,8 @@ jobs:
         uses: docker/setup-buildx-action@v1
 
       - name: Build, tag, and push image to Amazon ECR
-        run: |
-          IMAGE_URI="GoogleContainerTools/kaniko-executor@latest"
-          /kaniko/executor --context $GITHUB_WORKSPACE \
-          --dockerfile $GITHUB_WORKSPACE/dockerfile \
-          --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
+        image: gcr.io/kaniko-project/executor:latest
+        args:
+            - "--dockerfile=$GITHUB_WORKSPACE/dockerfile"
+            - "--context=gs://$GITHUB_WORKSPACE"
+            - "--destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0"
