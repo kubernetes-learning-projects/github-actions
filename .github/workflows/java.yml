@@ -28,5 +28,5 @@ jobs:
             -v $(pwd):/workspace \
             gcr.io/kaniko-project/executor:latest \
             --context=/workspace \
-            --dockerfile=/workspace/dockerfile \
+            --dockerfile= . \
             --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
