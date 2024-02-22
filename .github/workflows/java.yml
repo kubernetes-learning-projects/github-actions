@@ -19,11 +19,11 @@ jobs:
           repository: kubernetes-learning-projects/kube-petclinc-app
           ref: main
 
-      - name: Change ownership of files
-        run: sudo chown -R ubuntu:ubuntu .
-
       - name: Build Java Application
         run: mvn clean install -DskipTests
+
+      - name: Change ownership of files
+        run: sudo chown -R ubuntu:ubuntu .
 
       - name: Perform ls and pwd
         run: |
