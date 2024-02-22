@@ -28,7 +28,7 @@ jobs:
       - name: Perform ls and pwd
         run: |
           ls -al
-          ls -al /target
+          ls -al target
           pwd
 
       - name: Build Docker Image
