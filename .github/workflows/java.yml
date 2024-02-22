@@ -19,6 +19,11 @@ jobs:
           repository: kubernetes-learning-projects/kube-petclinc-app
           ref: main
 
+      - name: Perform ls and pwd
+        run: |
+          ls -al
+          pwd
+
       - name: Build Java Application
         run: mvn clean install -DskipTests
 
