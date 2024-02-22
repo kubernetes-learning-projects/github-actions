@@ -37,5 +37,5 @@ jobs:
           -v $(pwd):/workspace \
           gcr.io/kaniko-project/executor:latest \
           --context=/workspace \
-          --dockerfile=/Dockerfile \
+          --dockerfile=Dockerfile \
           --no-push
