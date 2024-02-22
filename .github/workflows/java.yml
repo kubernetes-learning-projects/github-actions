@@ -22,10 +22,13 @@ jobs:
       - name: Build Java Application
         run: mvn clean install -DskipTests
 
-      - name: Build image using Kaniko
-        uses: bymarshall/kaniko-action@main
+      - name: Build and push Docker image to ECR
+        uses: GoogleContainerTools/kaniko-action@v1
         with:
-          image: gcr.io/kaniko-project/executor:latest
-          buildContext: .
+          context: .
+          dockerfile: ./dockerfile
           destination: 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
-          secret: github-actions
+          args: >
+            --dockerfile=PATH_TO_YOUR_DOCKERFILE_DIRECTORY/Dockerfile
+            --context=dir://$(PWD)
+            --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
