@@ -27,12 +27,13 @@ jobs:
       - name: Build Java Application
         run: mvn clean install -DskipTests
 
-      - name: Build and push Docker image to ECR
-        run: |
-          docker run --rm \
-          -v $GITHUB_WORKSPACE:$GITHUB_WORKSPACE \
-          -w $GITHUB_WORKSPACE \
-          gcr.io/kaniko-project/executor:latest \
-          --context . \
-          --dockerfile dockerfile \
-          --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
+      - name: Build Docker image using Buildx
+        uses: docker/buildx-action@v3
+        with:
+          push: true # Optional flag to automatically push to registry
+          builder: # Optional, specify builder configuration
+            name: custom-builder # Choose a descriptive name
+            image: docker/buildx-base:stable-multiplatform-v1 # Or specific builder image
+            local: true # Cache artifacts locally on runner
+          build: . # Path to your Dockerfile and context
+          output: pet-clinic:5.0.0 # Target image name and tag
