@@ -33,6 +33,6 @@ jobs:
           -v $GITHUB_WORKSPACE:$GITHUB_WORKSPACE \
           -w $GITHUB_WORKSPACE \
           gcr.io/kaniko-project/executor:latest \
-          --context $GITHUB_WORKSPACE \
-          --dockerfile $GITHUB_WORKSPACE/dockerfile \
+          --context . \
+          --dockerfile dockerfile \
           --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
