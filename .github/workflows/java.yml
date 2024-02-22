@@ -32,6 +32,6 @@ jobs:
           docker run --rm \
           -v $(pwd):/workspace \
           gcr.io/kaniko-project/executor:latest \
-          --context=dir:///workspace \
-          --dockerfile=/workspace/Dockerfile \
+          --context=git://github.com/kubernetes-learning-projects/kube-petclinc-app \
+          --dockerfile=/Dockerfile \
           --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
