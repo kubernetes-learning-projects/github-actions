@@ -27,6 +27,6 @@ jobs:
           docker run --rm \
             -v $(pwd):/workspace \
             gcr.io/kaniko-project/executor:latest \
-            --context=/workspace \
-            --dockerfile=dockerfile \
-            --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
+            --context $GITHUB_WORKSPACE \
+            --dockerfile $GITHUB_WORKSPACE \
+            --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
