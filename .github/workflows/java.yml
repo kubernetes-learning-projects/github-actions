@@ -36,6 +36,6 @@ jobs:
           docker run --rm \
           -v $(pwd):/workspace \
           gcr.io/kaniko-project/executor:latest \
-          --context=git://github.com/kubernetes-learning-projects/kube-petclinc-app \
+          --context=/workspace \
           --dockerfile=/Dockerfile \
           --no-push
