@@ -29,7 +29,9 @@ jobs:
 
       - name: Build, tag, and push image to Amazon ECR
         run: |
-          IMAGE_URI="gcr.io/kaniko-project/executor:latest"
-          --context . \
-          --dockerfile ./Dockerfile \
-          --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.
+          docker run --rm \
+          -v $GITHUB_WORKSPACE:/workspace \
+          gcr.io/kaniko-project/executor:latest \
+          --context /workspace \
+          --dockerfile /workspace/Dockerfile \
+          --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
