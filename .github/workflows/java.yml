@@ -27,4 +27,4 @@ jobs:
       run: |
         echo "Building and pushing Docker image..."
         # Example command to run Kaniko and push to ECR
-        /kaniko/executor --context . --dockerfile ${DOCKERFILE} --destination ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG} --use-new-run
+        /kaniko-project/executor --context . --dockerfile ${DOCKERFILE} --destination ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG} --use-new-run
