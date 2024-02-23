@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build Docker Image
-        uses: andrewsu/kaniko-action@v2
+        uses: aevea/action-kaniko@master
         with:
             context: git://github.com/kubernetes-learning-projects/kube-petclinc-app
             dockerfile: /Dockerfile.test \
