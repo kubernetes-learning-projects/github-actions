@@ -13,10 +13,18 @@ jobs:
 
     steps:
 
-      - name: Build Docker Image
-        run: |
-          docker run --rm \
-          gcr.io/kaniko-project/executor:latest \
-          --context=git://github.com/kubernetes-learning-projects/kube-petclinc-app \
-          --dockerfile=/Dockerfile.test \
-          --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Build and Push Image to ECR
+      env:
+        IMAGE_NAME: pet-clinic
+        TAG: 6.0.0
+        DOCKERFILE: ./Dockerfile
+        ECR_REGISTRY: 814200988517.dkr.ecr.us-west-2.amazonaws.com
+        ECR_REPOSITORY: pet-clinic
+        IMAGE_TAG: 6.0.0
+      run: |
+        echo "Building and pushing Docker image..."
+        # Example command to run Kaniko and push to ECR
+        /kaniko/executor --context . --dockerfile ${DOCKERFILE} --destination ${ECR_REGISTRY}/${ECR_REPOSITORY}:${IMAGE_TAG} --use-new-run
