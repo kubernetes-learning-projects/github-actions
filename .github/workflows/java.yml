@@ -16,11 +16,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Build Docker Image
-        uses: aevea/action-kaniko@master
+      - name: Build image with Kaniko
+        uses: addnab/docker-run-action@v3
         with:
           image: gcr.io/kaniko-project/executor:latest
-          args: >-
-            --dockerfile=/Dockerfile.test
-            --context=git://github.com/kubernetes-learning-projects/kube-petclinc-app
-            --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0
+          run: |
+            /kaniko/executor \
+              --context git://github.com/kubernetes-learning-projects/kube-petclinc-app \
+              --dockerfile /Dockerfile.test \
+              --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0
