@@ -19,4 +19,4 @@ jobs:
           gcr.io/kaniko-project/executor:latest \
           --context=git://github.com/kubernetes-learning-projects/kube-petclinc-app \
           --dockerfile=/Dockerfile.test \
-          --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic
+          --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0
