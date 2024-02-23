@@ -19,6 +19,8 @@ jobs:
       - name: Build Docker Image
         uses: aevea/action-kaniko@master
         with:
-            context: git://github.com/kubernetes-learning-projects/kube-petclinc-app
-            dockerfile: /Dockerfile.test \
-            destination: 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0
+          image: gcr.io/kaniko-project/executor:latest
+          args: >-
+            --dockerfile=/Dockerfile.test
+            --context=git://github.com/kubernetes-learning-projects/kube-petclinc-app
+            --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0
