@@ -12,17 +12,5 @@ jobs:
       image: techiescamp/java-agent:3.0.0
 
     steps:
-
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
       - name: Wait for 5 minutes
         run: sleep 5m
-
-      # - name: Build Docker Image
-      #   run: |
-      #     docker run --rm \
-      #     gcr.io/kaniko-project/executor:latest \
-      #     --context=git://github.com/kubernetes-learning-projects/kube-petclinc-app \
-      #     --dockerfile=/Dockerfile \
-      #     --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.
