@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: test_runner
     container:
-      image: techiescamp/java-agent:4.0.0
+      image: techiescamp/java-agent:3.0.0
 
     steps:
 
@@ -21,7 +21,7 @@ jobs:
         with:
           image: gcr.io/kaniko-project/executor:latest
           run: |
-            /kaniko/executor \
+            sh -c /kaniko/executor \
               --context git://github.com/kubernetes-learning-projects/kube-petclinc-app \
               --dockerfile /Dockerfile.test \
               --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0
