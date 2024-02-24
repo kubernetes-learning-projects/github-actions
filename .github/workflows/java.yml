@@ -16,12 +16,9 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Build image with Kaniko
-        uses: addnab/docker-run-action@v3
-        with:
-          image: gcr.io/kaniko-project/executor:latest
-          run: |
-            sh -c /kaniko/executor \
-              --context git://github.com/kubernetes-learning-projects/kube-petclinc-app \
-              --dockerfile /Dockerfile.test \
-              --destination 814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0
+      - name: Build Docker Image
+        run: |
+          gcr.io/kaniko-project/executor:latest \
+          --context=git://github.com/kubernetes-learning-projects/kube-petclinc-app \
+          --dockerfile=/Dockerfile \
+          --destination=814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.
