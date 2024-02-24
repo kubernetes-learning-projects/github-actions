@@ -7,10 +7,13 @@ on:
 
 jobs:
   build:
-    runs-on: arc-runner-set
+    runs-on: test_runner
     container:
       image: techiescamp/java-agent:3.0.0
 
     steps:
-      - name: Wait for 5 minutes
-        run: sleep 5m
+
+      - name: Stress the pod
+        run: |
+          apt-get update && apt-get install -y stress
+          stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M --timeout 300s
