@@ -12,5 +12,5 @@ jobs:
       image: techiescamp/java-agent:3.0.0
 
     steps:
-      - name: Wait for 5 minutes
+      - name: Wait for 5 min
         run: sleep 5m
