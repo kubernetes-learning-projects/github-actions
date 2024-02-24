@@ -8,9 +8,7 @@ on:
 jobs:
   build:
     runs-on: arc-runner-set
-    container:
-      image: techiescamp/java-agent:3.0.0
-
+    
     steps:
       - name: Wait for 5 minutes
         run: sleep 5m
