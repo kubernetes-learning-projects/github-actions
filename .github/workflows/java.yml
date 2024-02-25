@@ -11,7 +11,7 @@ jobs:
     container:
       image: gcr.io/kaniko-project/executor:debug # the kaniko image
     permissions:
-      contents: read # read the repository
+      contents: read
       packages: write
 
     steps:
