@@ -8,7 +8,15 @@ on:
 jobs:
   build:
     runs-on: arc-runner-set
+    container:
+      image: gcr.io/kaniko-project/executor:debug # the kaniko image
+    permissions:
+      contents: read # read the repository
+      packages: write
 
     steps:
-      - name: Wait for 5 min
-        run: sleep 5m
+      - name: Build and push container test
+        run: |
+          /kaniko/executor --dockerfile="/Dockerfile.test" \
+            --context="git://github.com/kubernetes-learning-projects/kube-petclinc-app" \
+            --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0"
