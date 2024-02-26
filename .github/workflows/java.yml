@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: arc-runner-set
     container:
-      image: gcr.io/kaniko-project/executor:latest
+      image: gcr.io/kaniko-project/executor:debug
     permissions:
       contents: read
       packages: write
