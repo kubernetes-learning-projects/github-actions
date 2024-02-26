@@ -26,4 +26,4 @@ jobs:
         run: |
           /kaniko/executor --dockerfile="/Dockerfile.kaniko" \
             --context="git://github.com/kubernetes-learning-projects/kube-petclinc-app" \
-            --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0"
+            --no-push
