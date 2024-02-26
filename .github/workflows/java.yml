@@ -21,8 +21,6 @@ jobs:
 
       # - name: Sleep
       #   run: sleep 10m
-      - uses: aws-actions/amazon-ecr-login@v1
-        id: ecr
         
       - name: Build and push container test
         run: |
