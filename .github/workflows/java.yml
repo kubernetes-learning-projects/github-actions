@@ -17,13 +17,13 @@ jobs:
     steps:
       - name: List ECR Repositories
         run: |
-          aws ecr describe-repositories
-          
-      - name: Sleep
-        run: sleep 10m
+          aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 814200988517.dkr.ecr.us-west-2.amazonaws.com
+
+      # - name: Sleep
+      #   run: sleep 10m
         
-      - name: Build and push container test
-        run: |
-          /kaniko/executor --dockerfile="/Dockerfile.test" \
-            --context="git://github.com/kubernetes-learning-projects/kube-petclinc-app" \
-            --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0"
+      # - name: Build and push container test
+      #   run: |
+      #     /kaniko/executor --dockerfile="/Dockerfile.test" \
+      #       --context="git://github.com/kubernetes-learning-projects/kube-petclinc-app" \
+      #       --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0"
