@@ -21,9 +21,6 @@ jobs:
 
       # - name: Sleep
       #   run: sleep 10m
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: arn:aws:iam::814200988517:role/ecr-sa
       - uses: aws-actions/amazon-ecr-login@v1
         id: ecr
         
