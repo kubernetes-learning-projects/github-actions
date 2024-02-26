@@ -15,11 +15,11 @@ jobs:
       packages: write
 
     steps:
-      - name: Sleep
-        run: sleep 5m
-
-      # - name: Build and push container test
-      #   run: |
-      #     /kaniko/executor --dockerfile="/Dockerfile.test" \
-      #       --context="git://github.com/kubernetes-learning-projects/kube-petclinc-app" \
-      #       --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0"
+      # - name: Sleep
+      #   run: sleep 5m
+        
+      - name: Build and push container test
+        run: |
+          /kaniko/executor --dockerfile="/Dockerfile.test" \
+            --context="git://github.com/kubernetes-learning-projects/kube-petclinc-app" \
+            --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:6.0.0"
