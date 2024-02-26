@@ -9,14 +9,18 @@ jobs:
   build:
     runs-on: arc-runner-set
     container:
-      image: gcr.io/kaniko-project/executor:debug # the kaniko image
+      image: techiescamp/java-agent:3.0.0
     permissions:
       contents: read
       packages: write
 
     steps:
-      # - name: Sleep
-      #   run: sleep 5m
+      - name: List ECR Repositories
+        run: |
+          aws ecr describe-repositories
+          
+      - name: Sleep
+        run: sleep 10m
         
       - name: Build and push container test
         run: |
