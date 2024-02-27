@@ -10,9 +10,6 @@ jobs:
     runs-on: arc-runner-set
     container:
       image: gcr.io/kaniko-project/executor:v1.20.1-debug
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       # - name: List ECR Repositories
