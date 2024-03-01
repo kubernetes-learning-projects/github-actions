@@ -8,7 +8,7 @@ on:
 
 jobs:
   app-build:
-    runs-on: eks_runner
+    runs-on: arc-runner-set
     container:
       image: techiescamp/java-agent:2.0.0
 
