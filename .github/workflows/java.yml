@@ -10,7 +10,7 @@ jobs:
   app-build:
     runs-on: arc-runner-set
     container:
-      image: techiescamp/java-agent:2.0.0
+      image: techiescamp/java-agent:3.0.0
 
     steps:
 
