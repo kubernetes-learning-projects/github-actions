@@ -15,9 +15,10 @@ jobs:
     steps:
 
     - name: Sleep
-      run: sleep 5m
+      run: sleep 10s
 
   kaniko-build:
+    needs: app-build
     runs-on: arc-runner-set
     container:
       image: ubuntu:latest
