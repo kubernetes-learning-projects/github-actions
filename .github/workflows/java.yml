@@ -9,21 +9,11 @@ on:
 jobs:
   app-build:
     runs-on: arc-runner-set
-    container:
-      image: ubuntu:latest
-
+    
     steps:
-
-    - name: Sleep
-      run: sleep 10s
-
-  kaniko-build:
-    needs: app-build
-    runs-on: arc-runner-set
-    container:
-      image: ubuntu:latest
-
-    steps:
-
-      - name: Sleep
-        run: sleep 5m
+    - name: Run containers in parallel
+      run: |
+        docker run -d --name container1 alpine sleep 600 &
+        docker run -d --name container2 alpine sleep 600 &
+        docker run -d --name container3 alpine sleep 600 &
+        wait
