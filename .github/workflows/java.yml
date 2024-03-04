@@ -23,6 +23,11 @@ jobs:
       - name: Build Java Application
         run: mvn clean install -DskipTests
 
+      - name: test
+        run: |
+          ls
+          pwd
+
   kaniko-build:
     needs: app-build
     runs-on: arc-runner-set
@@ -31,6 +36,11 @@ jobs:
 
     steps:
 
+      - name: test
+        run: |
+          ls
+          pwd
+          
       - name: Build and push container test
         run: |
           /kaniko/executor --dockerfile="/Dockerfile" \
