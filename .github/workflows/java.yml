@@ -7,32 +7,11 @@ on:
 
 
 jobs:
-  app-build:
-    runs-on: arc-runner-set
-    container:
-      image: techiescamp/java-agent:3.0.0
-
-    steps:
-
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          repository: kubernetes-learning-projects/kube-petclinc-app
-          ref: main
-
-      - name: Build Java Application
-        run: mvn clean install -DskipTests
-
-      - name: test
-        run: |
-          ls
-          pwd
-
   kaniko-build:
     needs: app-build
     runs-on: arc-runner-set
     container:
-      image: gcr.io/kaniko-project/executor:v1.20.1-debug
+      image: techiescamp/github-actions:2.0.0
 
     steps:
 
@@ -40,9 +19,9 @@ jobs:
         run: |
           ls
           pwd
-          
+
       - name: Build and push container test
         run: |
-          /kaniko/executor --dockerfile="/Dockerfile" \
-            --context="${{ github.workspace }}" \
+          /kaniko/executor --dockerfile="/Dockerfile.test" \
+            --context="git://github.com/kubernetes-learning-projects/kube-petclinc-app" \
             --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/pet-clinic:5.0.0"
