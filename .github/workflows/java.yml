@@ -18,5 +18,5 @@ jobs:
         run: |
           /kaniko/executor --dockerfile="/Dockerfile" \
             --context="git://github.com/kubernetes-learning-projects/github-actions" \
-            --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/dev:1.0.0"
+            --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/dev:1.0.${{ github.run_number }}"
 
