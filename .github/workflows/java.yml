@@ -27,12 +27,6 @@ jobs:
           chart_dir="java-app"
           new_image_tag=3.0.0
           sed -i "s/^\(\s*\)tag: .*/\1tag: $new_image_tag/" "$chart_dir/values-dev.yaml"
-      
-      - name: view
-        run: |
-          echo "${{ secrets.TOKEN }}"
-          echo "${{ secrets.USERNAME }}"
-          echo "${{ secrets.USERNAME }}"
 
       - name: Commit the changes made
         run: |
