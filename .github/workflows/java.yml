@@ -33,13 +33,13 @@ jobs:
 
       - name: Commit the changes made
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
         run: |
           git config --global --add safe.directory "${GITHUB_WORKSPACE}"
           git config --global user.name 'aswin-vijayan'
           git config --global user.email 'aswinvj390@gmail.com'
           git add .
           git commit -m "updating image tag"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:${{ secrets.TOKEN }}@github.com/${{ github.repository }}
           git push
 
