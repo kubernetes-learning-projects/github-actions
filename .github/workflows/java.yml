@@ -29,7 +29,7 @@ jobs:
           sed -i "s/^\(\s*\)tag: .*/\1tag: $new_image_tag/" "$chart_dir/values-dev.yaml"
       
       - name: view
-        run: cat java-app/values-dev.yaml
+        run: echo "${{ secrets.TOKEN }}"
 
       - name: Commit the changes made
         run: |
