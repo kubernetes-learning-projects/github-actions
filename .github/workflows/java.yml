@@ -7,34 +7,22 @@ on:
 
 
 jobs:
-  kaniko-build:
+  docker-build:
     runs-on: arc-runner-set
     container:
       image: techiescamp/java-agent:3.0.0
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-        with:
-          repository: kubernetes-learning-projects/helm-chart
-          token: ${{ secrets.GIT_TOKEN }}
+        uses: actions/checkout@v3
 
-      - name: Check
-        run: ls
-
-      - name: Update Image Tag Values
+      - name: Build Docker image
         run: |
-          chart_dir="java-app"
-          new_image_tag=2.0.0
-          sed -i "s/^\(\s*\)tag: .*/\1tag: $new_image_tag/" "$chart_dir/values-dev.yaml"
+          docker build -f test:1.0 -t Dockerfile .
 
-      - name: Commit the changes made
+      - name: push
         run: |
-          git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-          git config --global user.name "${{ secrets.GIT_USERNAME }}"
-          git config --global user.email "${{ secrets.GIT_EMAIL }}"
-          git add .
-          git commit -m "updating image tag"
-          git push origin main
-
+          aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 814200988517.dkr.ecr.<region>.amazonaws.com
+          docker tag test:1.0 814200988517.dkr.ecr.us-west-2.amazonaws.com/dev:1.0
+          docker push 814200988517.dkr.ecr.us-west-2.amazonaws.com/dev:1.0
 
