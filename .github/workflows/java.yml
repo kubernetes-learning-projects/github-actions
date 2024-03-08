@@ -29,7 +29,7 @@ jobs:
           sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values-dev.yaml"
       
       - name: view
-        run: cat /java-app/values-dev.yaml
+        run: cat java-app/values-dev.yaml
 
       - name: Commit the changes made
         run: | 
