@@ -32,8 +32,6 @@ jobs:
         run: cat java-app/values-dev.yaml
 
       - name: Commit the changes made
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
         run: |
           git config --global --add safe.directory "${GITHUB_WORKSPACE}"
           git config --global user.name 'aswin-vijayan'
