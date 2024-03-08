@@ -16,8 +16,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          repository: kubernetes-learning-projects/github-actions
+          repository: kubernetes-learning-projects/helm-chart
           ref: main
+
+      - name: Check
+        run: ls
 
       - name: Update Image Tag Values
         run: |
