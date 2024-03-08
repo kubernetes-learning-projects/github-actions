@@ -18,7 +18,6 @@ jobs:
         with:
           repository: kubernetes-learning-projects/helm-chart
           token: ${{ secrets.GIT_TOKEN }}
-          ref: main
 
       - name: Check
         run: ls
