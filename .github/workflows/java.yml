@@ -30,12 +30,15 @@ jobs:
 
       - name: Commit the changes made
         run: |
-        
           git config --global --add safe.directory "${GITHUB_WORKSPACE}"
-          git config --global user.email "${{ secrets.USERNAME }}"
           git config --global user.name "${{ secrets.USERNAME }}"
+          git config --global user.email "${{ secrets.EMAIL }}"
           git add .
           git commit -m "updating image tag"
-          git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git
+          git push https://${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          USERNAME: ${{ secrets.USERNAME }}
+          EMAIL: ${{ secrets.EMAIL }}
 
 
