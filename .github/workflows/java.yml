@@ -35,8 +35,9 @@ jobs:
           git config --global user.email "${{ secrets.EMAIL }}"
           git add .
           git commit -m "updating image tag"
-          git push https://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@github.com/kubernetes-learning-projects/helm-chart.git HEAD:main
+          git push https://${{ secrets.TOKEN }}@github.com/kubernetes-learning-projects/helm-chart.git HEAD:main
         env:
+          TOKEN: ${{ secrets.TOKEN }}
           USERNAME: ${{ secrets.USERNAME }}
           EMAIL: ${{ secrets.EMAIL }}
 
