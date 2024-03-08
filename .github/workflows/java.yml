@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: kubernetes-learning-projects/helm-chart
-          token: ${{ secrets.GIT_TOKEN }}
+          token: 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
 
       - name: Check
         run: ls
