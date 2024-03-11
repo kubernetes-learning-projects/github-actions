@@ -19,18 +19,3 @@ jobs:
           /kaniko/executor --dockerfile="/Dockerfile" \
             --context="git://github.com/kubernetes-learning-projects/github-actions" \
             --destination="814200988517.dkr.ecr.us-west-2.amazonaws.com/dev:1.0.${{ github.run_number }}"
-    
-  change-manifest:
-    runs-on: arc-runner-set
-    container:
-      image: techiescamp/java-agent:3.0.0
-    steps:
-      - name: Update Image tag
-        run: |
-          curl -X PATCH https://35.165.41.209:30007/api/v1/applications/test \
-          -H "Authorization: Bearer ${{ secrets.ARGOCD_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d '{
-              "patch": "{\"spec\": {\"source\": {\"repoURL\": \"https://github.com/kubernetes-learning-projects/helm-chart.git\", \"path\": \"nginx\", \"targetRevision\": \"HEAD\", \"parameterOverrides\": [{\"name\": \"nginx.image.tag\", \"value\": \"1.0.${{ github.run_number }}\"}]}}}",
-              "patchType": "merge"
-          }' --insecure && echo "Manifest update successful" || echo "Manifest update failed"
