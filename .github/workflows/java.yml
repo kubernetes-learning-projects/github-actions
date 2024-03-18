@@ -13,6 +13,7 @@ jobs:
       image: gcr.io/kaniko-project/executor:debug
 
     steps:
+    
       - name: Build and push container test
         run: |
           /kaniko/executor --dockerfile="/Dockerfile" \
