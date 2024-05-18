@@ -24,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: us-central1-docker.pkg.dev/aerial-reef-417506/nginx:latest
+          tags: us-central1-docker.pkg.dev/aerial-reef-417506/nginx/nginx:1.0.0
