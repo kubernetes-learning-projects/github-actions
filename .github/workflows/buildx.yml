@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          platforms: linux/amd64
 
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v1
@@ -29,5 +31,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: us-central1-docker.pkg.dev/aerial-reef-417506/nginx/nginx:3.0.0
+          tags: us-central1-docker.pkg.dev/aerial-reef-417506/nginx/nginx:4.0.0
           platforms: linux/amd64
